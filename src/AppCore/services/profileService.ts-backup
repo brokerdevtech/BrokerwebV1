@@ -1,0 +1,15 @@
+import api from './api'; // Your Axios instance
+import UserRegistration from '../types/userRegistration'
+
+export const getProfile = async (userId:any) => {
+    try {
+       
+      // Make a POST request to your login API endpoint
+      const response = await api.post('Users/Profile', {'userId': userId});
+   //   const { accessToken, refreshToken } = response.data;
+   return response.data;
+    } catch (error) {
+      return { status: error.response.data.status, error: error.response.data.statusMessage || 'An error occurred' };
+    }
+};
+
